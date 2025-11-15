@@ -48,6 +48,7 @@ Im Config-File `onSave: true` aktivieren
     "preserve_newlines": true
   }
 }
+```
 
 ## License and Credits
 
