@@ -1,6 +1,9 @@
 name: Publish VS Code Extension
 
 on:
+  release:
+    types: [published]
+
   workflow_dispatch:
 
 permissions:
@@ -8,7 +11,9 @@ permissions:
 
 jobs:
   build:
+    name: Build & Package VSIX
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,9 +22,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Compile TypeScript
         run: npm run compile
@@ -37,26 +43,35 @@ jobs:
           path: "*.vsix"
 
   release:
+    name: Attach VSIX to GitHub Release
     needs: build
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
+
     steps:
-      - name: Download artifact
+      - name: Download VSIX artifact
         uses: actions/download-artifact@v4
         with:
           name: extension
+          path: dist
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+      - name: Create / update GitHub Release with VSIX
+        uses: softprops/action-gh-release@v2
         with:
-          files: "*.vsix"
+          files: dist/*.vsix
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
+    name: Publish to VS Code Marketplace
     needs: release
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -73,8 +88,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: extension
+          path: dist
 
       - name: Publish to VSCode Marketplace
-        run: vsce publish --packagePath *.vsix
+        run: vsce publish --packagePath dist/*.vsix
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
