@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/ubodigat/Code-Formatter-for-HTML-CSS-and-JS#readme",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.106.0"
   },
   "categories": [
     "Formatters",
