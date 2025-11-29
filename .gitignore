@@ -6,3 +6,4 @@ _test
 /typings/modules/*
 /typings/index.d.ts
 /*.vsix
+DOKUMENTATION.txt
