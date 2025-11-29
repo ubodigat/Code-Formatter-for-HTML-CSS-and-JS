@@ -28,7 +28,10 @@
   "engines": {
     "vscode": "^1.80.0"
   },
-  "categories": ["Formatters", "Programming Languages"],
+  "categories": [
+    "Formatters",
+    "Programming Languages"
+  ],
   "keywords": [
     "formatter",
     "beautify",
@@ -62,13 +65,13 @@
   },
   "dependencies": {
     "js-beautify": "^1.15.1",
-    "mkdirp": "^3.0.1",
-    "json5": "^2.2.3"
+    "json5": "^2.2.3",
+    "mkdirp": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
     "@types/vscode": "^1.106.0",
     "typescript": "^5.9.3",
-    "vsce": "^2.15.0"
+    "vsce": "^1.97.0"
   }
 }
