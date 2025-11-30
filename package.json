@@ -2,7 +2,7 @@
     "name": "ubodigat-code-formatter",
     "displayName": "U:Bodigat Code Formatter",
     "description": "A modern code formatter for HTML, CSS and JavaScript, based on Lonefy's original JS-CSS-HTML Formatter.",
-    "version": "1.0.2.2",
+    "version": "1.0.3",
     "publisher": "ubodigat",
     "author": "Originally by Lonefy, maintained and updated by U:Bodigat Development",
     "license": "MIT",
