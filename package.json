@@ -1,21 +1,13 @@
 {
     "name": "ubodigat-code-formatter",
     "displayName": "U:Bodigat Code Formatter",
-    "description": "A modern code formatter for HTML, CSS and JavaScript, based on Lonefy's original JS-CSS-HTML Formatter.",
-    "version": "1.0.3",
+    "description": "A modern code formatter for HTML, CSS, JavaScript and JSON, based on Lonefy's original JS-CSS-HTML Formatter.",
+    "version": "1.0.4",
     "publisher": "ubodigat",
     "author": "Originally by Lonefy, maintained and updated by U:Bodigat Development",
     "license": "MIT",
     "icon": "images/icon.png",
-    "contributors": [{
-            "name": "Lonefy",
-            "url": "https://github.com/Lonefy"
-        },
-        {
-            "name": "U:Bodigat",
-            "url": "https://github.com/ubodigat"
-        }
-    ],
+
     "repository": {
         "type": "git",
         "url": "https://github.com/ubodigat/Code-Formatter-for-HTML-CSS-and-JS"
@@ -24,9 +16,11 @@
         "url": "https://github.com/ubodigat/Code-Formatter-for-HTML-CSS-and-JS/issues"
     },
     "homepage": "https://github.com/ubodigat/Code-Formatter-for-HTML-CSS-and-JS#readme",
+
     "engines": {
-        "vscode": "^1.106.0"
+        "vscode": "^1.80.0"
     },
+
     "categories": [
         "Formatters",
         "Programming Languages"
@@ -38,9 +32,11 @@
         "css",
         "javascript",
         "json",
+        "scss",
         "prettify",
         "beautifier"
     ],
+
     "activationEvents": [
         "onLanguage:html",
         "onLanguage:css",
@@ -48,26 +44,67 @@
         "onLanguage:json",
         "onLanguage:scss"
     ],
+
     "main": "./out/src/extension.js",
+
     "contributes": {
         "commands": [{
             "command": "formatter.beautify",
-            "title": "Beautify Document"
-        }]
+            "title": "U:Bodigat Code Formatter: Beautify Document",
+            "category": "U:Bodigat Code Formatter"
+        }],
+
+        "configuration": {
+            "type": "object",
+            "title": "U:Bodigat Code Formatter",
+            "properties": {
+                "ubodigatCodeFormatter.formatOnSave": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Automatically format supported files on save using U:Bodigat Code Formatter."
+                },
+                "ubodigatCodeFormatter.configFile": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Optional path to a formatter.json configuration file (relative to the workspace)."
+                }
+            }
+        },
+
+        "configurationDefaults": {
+            "[html]": {
+                "editor.defaultFormatter": "ubodigat.ubodigat-code-formatter"
+            },
+            "[css]": {
+                "editor.defaultFormatter": "ubodigat.ubodigat-code-formatter"
+            },
+            "[javascript]": {
+                "editor.defaultFormatter": "ubodigat.ubodigat-code-formatter"
+            },
+            "[json]": {
+                "editor.defaultFormatter": "ubodigat.ubodigat-code-formatter"
+            },
+            "[scss]": {
+                "editor.defaultFormatter": "ubodigat.ubodigat-code-formatter"
+            }
+        }
     },
+
     "scripts": {
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "package": "vsce package"
     },
+
     "dependencies": {
         "js-beautify": "^1.15.1",
         "json5": "^2.2.3",
         "mkdirp": "^3.0.1"
     },
+
     "devDependencies": {
-        "@types/node": "^20.11.24",
-        "@types/vscode": "^1.106.0",
+        "@types/node": "^25.0.6",
+        "@types/vscode": "^1.108.1",
         "@vscode/vsce": "^3.7.1",
         "typescript": "^5.9.3"
     }
