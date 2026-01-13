@@ -2,7 +2,7 @@
     "name": "ubodigat-code-formatter",
     "displayName": "U:Bodigat Code Formatter",
     "description": "A modern code formatter for HTML, CSS, JavaScript and JSON, based on Lonefy's original JS-CSS-HTML Formatter.",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "publisher": "ubodigat",
     "author": "Originally by Lonefy, maintained and updated by U:Bodigat Development",
     "license": "MIT",
@@ -104,7 +104,7 @@
 
     "devDependencies": {
         "@types/node": "^25.0.6",
-        "@types/vscode": "^1.108.1",
+        "@types/vscode": "^1.80.0",
         "@vscode/vsce": "^3.7.1",
         "typescript": "^5.9.3"
     }
